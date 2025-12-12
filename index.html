@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 圣诞团建活动邀请函</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #c41e3a 0%, #2e8b57 50%, #c41e3a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            animation: backgroundShift 10s ease-in-out infinite;
+        }
+        
+        @keyframes backgroundShift {
+            0%, 100% { background: linear-gradient(135deg, #c41e3a 0%, #2e8b57 50%, #c41e3a 100%); }
+            50% { background: linear-gradient(135deg, #2e8b57 0%, #c41e3a 50%, #2e8b57 100%); }
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff0000, #00ff00, #ff0000);
+            animation: borderGlow 2s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #c41e3a, #228b22);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '❄️';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: -20px;
+            left: -20px;
+            animation: snowfall 6s linear infinite;
+        }
+        
+        .header::after {
+            content: '🎄';
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.1;
+            top: -10px;
+            right: -10px;
+            animation: treeGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes snowfall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100px) rotate(360deg); }
+        }
+        
+        @keyframes treeGlow {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.1); }
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        /* 登录界面样式 */
+        .login-section {
+            text-align: center;
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2d3748;
+            font-size: 16px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f7fafc;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #c41e3a;
+            background: white;
+            box-shadow: 0 0 10px rgba(196, 30, 58, 0.2);
+        }
+        
+        .login-button {
+            background: linear-gradient(45deg, #c41e3a, #228b22);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.4);
+        }
+        
+        .error-message {
+            color: #e53e3e;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+            text-align: center;
+        }
+        
+        /* 主界面样式 */
+        .main-section {
+            display: none;
+        }
+        
+        .welcome-card {
+            background: linear-gradient(135deg, #fff5f5, #f0fff4);
+            border: 2px solid #c41e3a;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .welcome-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #c41e3a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .event-details {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #228b22;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #2d3748;
+            display: inline-block;
+            min-width: 100px;
+        }
+        
+        .detail-value {
+            color: #4a5568;
+        }
+        
+        .gift-section {
+            background: linear-gradient(135deg, #fff8dc, #f0f8ff);
+            border: 2px solid #228b22;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+        
+        .gift-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #228b22;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .gift-notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #856404;
+        }
+        
+        .wish-card {
+            background: white;
+            border: 2px solid #c41e3a;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .wish-content {
+            font-size: 18px;
+            color: #2d3748;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        /* 管理员面板样式 */
+        .admin-panel {
+            display: none;
+        }
+        
+        .admin-card {
+            background: #fff5f5;
+            border: 2px solid #e53e3e;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .admin-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #c53030;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .admin-table th,
+        .admin-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .admin-table th {
+            background: #f7fafc;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        
+        .admin-table tr:hover {
+            background: #f7fafc;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+            transform: translateY(-1px);
+        }
+        
+        .notice {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .notice.success {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .notice.error {
+            background: #e53e3e;
+            color: white;
+        }
+        
+        /* 圣诞特效样式 */
+        .santa-container {
+            position: fixed;
+            top: -150px;
+            left: -200px;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        .santa-sleigh {
+            position: relative;
+            width: 200px;
+            height: 100px;
+        }
+        
+        .reindeer {
+            position: absolute;
+            left: -80px;
+            top: 20px;
+            font-size: 40px;
+            animation: reindeerBounce 0.5s ease-in-out infinite alternate;
+        }
+        
+        .santa {
+            position: absolute;
+            right: 0;
+            top: 30px;
+            font-size: 35px;
+            animation: santaWave 1s ease-in-out infinite;
+        }
+        
+        .sleigh {
+            position: absolute;
+            right: 10px;
+            top: 50px;
+            font-size: 30px;
+        }
+        
+        @keyframes reindeerBounce {
+            0% { transform: translateY(0px) rotate(-5deg); }
+            100% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        @keyframes santaWave {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        @keyframes santaFly {
+            0% {
+                transform: translateX(-200px) translateY(0px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(calc(100vw + 200px)) translateY(-50px) rotate(10deg);
+                opacity: 0;
+            }
+        }
+        
+        .santa-flying {
+            animation: santaFly 4s ease-in-out;
+        }
+        
+        /* 礼物散落特效 */
+        .gift-rain {
+            position: fixed;
+            top: -50px;
+            z-index: 9998;
+            pointer-events: none;
+            font-size: 25px;
+            opacity: 0;
+        }
+        
+        @keyframes giftFall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .gift-falling {
+            animation: giftFall 3s linear;
+        }
+        
+        /* 雪花特效增强 */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            z-index: 1000;
+            pointer-events: none;
+            color: white;
+            font-size: 20px;
+            opacity: 0.8;
+        }
+        
+        @keyframes snowFall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .snowflake-falling {
+            animation: snowFall 8s linear infinite;
+        }
+        
+        /* 登录成功特效 */
+        .success-sparkle {
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            font-size: 30px;
+            opacity: 0;
+        }
+        
+        @keyframes sparkle {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .sparkle-animation {
+            animation: sparkle 1.5s ease-out;
+        }
+        
+        /* 圣诞铃铛摇摆 */
+        .christmas-bell {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            z-index: 1001;
+            cursor: pointer;
+            animation: bellSwing 2s ease-in-out infinite;
+        }
+        
+        /* 音乐控制按钮 */
+        .music-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .music-toggle {
+            background: linear-gradient(45deg, #c41e3a, #228b22);
+            color: white;
+        }
+        
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+        }
+        
+        .music-toggle.playing {
+            animation: musicPulse 1s ease-in-out infinite;
+        }
+        
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .volume-control {
+            background: white;
+            color: #c41e3a;
+            border: 2px solid #c41e3a;
+        }
+        
+        .volume-control:hover {
+            background: #c41e3a;
+            color: white;
+        }
+        
+        /* 音乐可视化效果 */
+        .music-visualizer {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            gap: 3px;
+            z-index: 1000;
+        }
+        
+        .music-bar {
+            width: 4px;
+            background: linear-gradient(to top, #c41e3a, #228b22);
+            border-radius: 2px;
+            animation: musicBars 0.8s ease-in-out infinite alternate;
+        }
+        
+        .music-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .music-bar:nth-child(2) { height: 30px; animation-delay: 0.1s; }
+        .music-bar:nth-child(3) { height: 25px; animation-delay: 0.2s; }
+        .music-bar:nth-child(4) { height: 35px; animation-delay: 0.3s; }
+        .music-bar:nth-child(5) { height: 20px; animation-delay: 0.4s; }
+        .music-bar:nth-child(6) { height: 30px; animation-delay: 0.5s; }
+        .music-bar:nth-child(7) { height: 25px; animation-delay: 0.6s; }
+        
+        @keyframes musicBars {
+            0% { transform: scaleY(0.3); opacity: 0.7; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+        
+        @keyframes bellSwing {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+        
+        /* 背景星星闪烁 */
+        .star {
+            position: fixed;
+            z-index: 999;
+            pointer-events: none;
+            color: gold;
+            font-size: 15px;
+            opacity: 0;
+        }
+        
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        .star-twinkling {
+            animation: starTwinkle 2s ease-in-out infinite;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                max-width: calc(100% - 20px);
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .admin-table {
+                font-size: 12px;
+            }
+            
+            .admin-table th,
+            .admin-table td {
+                padding: 8px;
+            }
+            
+            .santa-sleigh {
+                width: 150px;
+                height: 75px;
+            }
+            
+            .reindeer, .santa, .sleigh {
+                font-size: 25px;
+            }
+            
+            .gift-rain {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎄 圣诞团建活动邀请函 🎅</h1>
+            <p>欢迎参加我们的圣诞团建活动！</p>
+        </div>
+        
+        <div class="content">
+            <!-- 登录界面 -->
+            <div class="login-section" id="loginSection">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="userIdInput">请输入您的英文名：</label>
+                        <input type="text" id="userIdInput" placeholder="例如：alice" autocomplete="off">
+                        <div class="error-message" id="errorMessage">用户名不存在，请检查输入</div>
+                    </div>
+                    <button class="login-button" id="loginBtn">🎄 进入活动</button>
+                </div>
+            </div>
+            
+            <!-- 主界面 -->
+            <div class="main-section" id="mainSection">
+                <div class="welcome-card">
+                    <div class="welcome-title">🌟 欢迎来到我们的圣诞团建活动 🌟</div>
+                    
+                    <div class="event-details">
+                        <h3 style="color: #c41e3a; margin-bottom: 15px; text-align: center;">🎄 深圳圣诞团建详情 🎄</h3>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">⏰ 时间：</span>
+                            <span class="detail-value">2025年12月24号 12点-16点左右</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">👗 Dress Code：</span>
+                            <span class="detail-value">红绿色衣服 / 圣诞主题</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">🎯 活动：</span>
+                            <span class="detail-value">中午聚餐 + 下午神秘活动</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">📍 聚餐地点：</span>
+                            <span class="detail-value">VITELLONI 小牛牛·意大利餐厅(万象天地店)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gift-section">
+                    <div class="gift-title">🎁 礼物交换环节</div>
+                    
+                    <div class="gift-notice">
+                        <strong>⚠️ 重要提醒：</strong><br>
+                        辛苦参与了礼物交换的大家在23号或之前准备好需要交换的礼物，记得在24号带来～我们将在中午聚餐环节进行交换！
+                    </div>
+                    
+                    <div class="wish-card">
+                        <div style="color: #c41e3a; font-weight: bold; margin-bottom: 10px;">🎯 您抽到的心愿是：</div>
+                        <div class="wish-content" id="userWish">
+                            <!-- 用户的心愿将在这里显示 -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 管理员面板 -->
+                <div class="admin-panel" id="adminPanel">
+                    <div class="admin-card">
+                        <div class="admin-title">🔧 管理员面板 - 完整配对信息</div>
+                        <table class="admin-table" id="adminTable">
+                            <thead>
+                                <tr>
+                                    <th>抽选人</th>
+                                    <th>抽到的心愿</th>
+                                    <th>许愿人</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTableBody">
+                                <!-- 管理员数据将在这里显示 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="logoutBtn">退出登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notice" id="notice"></div>
+    
+    <!-- 圣诞特效元素 -->
+    <div class="santa-container" id="santaContainer">
+        <div class="santa-sleigh">
+            <div class="reindeer">🦌</div>
+            <div class="santa">🎅</div>
+            <div class="sleigh">🛷</div>
+        </div>
+    </div>
+    
+    <!-- 音乐控制 -->
+    <div class="music-controls">
+        <button class="music-btn music-toggle" id="musicToggle" title="播放/暂停圣诞音乐">🎵</button>
+        <button class="music-btn volume-control" id="volumeControl" title="音量控制">🔊</button>
+    </div>
+    
+    <!-- 音乐可视化 -->
+    <div class="music-visualizer" id="musicVisualizer">
+        <div class="music-bar"></div>
+        <div class="music-bar"></div>
+        <div class="music-bar"></div>
+        <div class="music-bar"></div>
+        <div class="music-bar"></div>
+        <div class="music-bar"></div>
+        <div class="music-bar"></div>
+    </div>
+    
+    <!-- 圣诞铃铛 -->
+    <div class="christmas-bell" id="christmasBell" title="点击播放铃声">🔔</div>
+    
+    <!-- 音频元素 -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <!-- 使用Web Audio API生成的圣诞音乐 -->
+    </audio>
+    
+    <audio id="bellSound" preload="auto">
+        <!-- 铃铛音效 -->
+    </audio>
+    
+    <audio id="loginSound" preload="auto">
+        <!-- 登录成功音效 -->
+    </audio>
+
+    <script>
+        // 用户数据 - 圣诞团建活动配对名单
+        const users = [
+            { 
+                id: 'admin', 
+                name: '管理员', 
+                isAdmin: true,
+                drawnWish: null,
+                wishOwner: null
+            },
+            { 
+                id: 'liztang', 
+                name: 'liztang', 
+                drawnWish: '实用、让人轻松的、幸福感提升的',
+                wishOwner: 'tingtingong'
+            },
+            { 
+                id: 'mandycfhe', 
+                name: 'mandycfhe', 
+                drawnWish: '漂亮、实用、品质',
+                wishOwner: 'rosiessluo'
+            },
+            { 
+                id: 'joyycsun', 
+                name: 'joyycsun', 
+                drawnWish: '香薰蜡烛',
+                wishOwner: 'anqifeng'
+            },
+            { 
+                id: 'jadyjian', 
+                name: 'jadyjian', 
+                drawnWish: 'kids, funny, not doll',
+                wishOwner: 'feliciajin'
+            },
+            { 
+                id: 'swanyuan', 
+                name: 'swanyuan', 
+                drawnWish: '实用',
+                wishOwner: 'jingjin'
+            },
+            { 
+                id: 'tingtingong', 
+                name: 'tingtingong', 
+                drawnWish: '随意',
+                wishOwner: 'mandycfhe'
+            },
+            { 
+                id: 'anqifeng', 
+                name: 'anqifeng', 
+                drawnWish: '有创意、应景、实用性高',
+                wishOwner: 'v_evennyang'
+            },
+            { 
+                id: 'vivhuang', 
+                name: 'vivhuang', 
+                drawnWish: '温馨的礼物',
+                wishOwner: 'liztang'
+            },
+            { 
+                id: 'rosiessluo', 
+                name: 'rosiessluo', 
+                drawnWish: '实用、简约、好看',
+                wishOwner: 'jadyjian'
+            },
+            { 
+                id: 'ludwigmo', 
+                name: 'ludwigmo', 
+                drawnWish: '实用性、长期可用的、好看',
+                wishOwner: 'swanyuan'
+            },
+            { 
+                id: 'jingjin', 
+                name: 'jingjin', 
+                drawnWish: '治愈',
+                wishOwner: 'ludwigmo'
+            },
+            { 
+                id: 'feliciajin', 
+                name: 'feliciajin', 
+                drawnWish: '小伙伴准备的都喜欢～',
+                wishOwner: 'vivhuang'
+            },
+            { 
+                id: 'v_evennyang', 
+                name: 'v_evennyang', 
+                drawnWish: '随意',
+                wishOwner: 'joyycsun'
+            }
+        ];
+        
+        // DOM 元素
+        const loginSection = document.getElementById('loginSection');
+        const mainSection = document.getElementById('mainSection');
+        const userIdInput = document.getElementById('userIdInput');
+        const loginBtn = document.getElementById('loginBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const userWish = document.getElementById('userWish');
+        const adminPanel = document.getElementById('adminPanel');
+        const adminTableBody = document.getElementById('adminTableBody');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const notice = document.getElementById('notice');
+        const santaContainer = document.getElementById('santaContainer');
+        const christmasBell = document.getElementById('christmasBell');
+        const musicToggle = document.getElementById('musicToggle');
+        const volumeControl = document.getElementById('volumeControl');
+        const musicVisualizer = document.getElementById('musicVisualizer');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const bellSound = document.getElementById('bellSound');
+        const loginSound = document.getElementById('loginSound');
+        
+        let currentUser = null;
+        let snowInterval = null;
+        let starInterval = null;
+        let audioContext = null;
+        let musicSource = null;
+        let isPlaying = false;
+        let currentVolume = 0.3;
+        
+        // 音乐和音效系统
+        class ChristmasAudio {
+            constructor() {
+                this.audioContext = null;
+                this.musicGain = null;
+                this.effectGain = null;
+                this.isInitialized = false;
+            }
+            
+            async initialize() {
+                if (this.isInitialized) return;
+                
+                try {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    this.musicGain = this.audioContext.createGain();
+                    this.effectGain = this.audioContext.createGain();
+                    
+                    this.musicGain.connect(this.audioContext.destination);
+                    this.effectGain.connect(this.audioContext.destination);
+                    
+                    this.musicGain.gain.value = currentVolume;
+                    this.effectGain.gain.value = 0.5;
+                    
+                    this.isInitialized = true;
+                } catch (error) {
+                    console.log('音频初始化失败，使用静音模式');
+                }
+            }
+            
+            // 生成圣诞音乐旋律
+            async playChristmasMusic() {
+                if (!this.isInitialized) await this.initialize();
+                if (!this.audioContext) return;
+                
+                // 播放《铃儿响叮当》旋律
+                const melody = [
+                    { note: 659.25, duration: 0.4 }, // E
+                    { note: 659.25, duration: 0.4 }, // E
+                    { note: 659.25, duration: 0.8 }, // E
+                    { note: 659.25, duration: 0.4 }, // E
+                    { note: 659.25, duration: 0.4 }, // E
+                    { note: 659.25, duration: 0.8 }, // E
+                    { note: 659.25, duration: 0.4 }, // E
+                    { note: 783.99, duration: 0.4 }, // G
+                    { note: 523.25, duration: 0.4 }, // C
+                    { note: 587.33, duration: 0.4 }, // D
+                    { note: 659.25, duration: 1.2 }, // E
+                ];
+                
+                let time = this.audioContext.currentTime;
+                
+                melody.forEach((note, index) => {
+                    this.playNote(note.note, time, note.duration);
+                    time += note.duration;
+                });
+                
+                // 循环播放
+                setTimeout(() => {
+                    if (isPlaying) this.playChristmasMusic();
+                }, time * 1000 - this.audioContext.currentTime * 1000 + 2000);
+            }
+            
+            playNote(frequency, startTime, duration) {
+                if (!this.audioContext) return;
+                
+                const oscillator = this.audioContext.createOscillator();
+                const envelope = this.audioContext.createGain();
+                
+                oscillator.connect(envelope);
+                envelope.connect(this.musicGain);
+                
+                oscillator.frequency.value = frequency;
+                oscillator.type = 'sine';
+                
+                envelope.gain.setValueAtTime(0, startTime);
+                envelope.gain.linearRampToValueAtTime(0.1, startTime + 0.05);
+                envelope.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+                
+                oscillator.start(startTime);
+                oscillator.stop(startTime + duration);
+            }
+            
+            // 播放铃铛音效
+            playBellEffect() {
+                if (!this.isInitialized || !this.audioContext) return;
+                
+                const frequencies = [800, 1000, 1200];
+                const startTime = this.audioContext.currentTime;
+                
+                frequencies.forEach((freq, index) => {
+                    setTimeout(() => {
+                        this.playNote(freq, this.audioContext.currentTime, 0.3);
+                    }, index * 100);
+                });
+            }
+            
+            // 播放登录成功音效
+            playSuccessEffect() {
+                if (!this.isInitialized || !this.audioContext) return;
+                
+                const notes = [523.25, 659.25, 783.99, 1046.50]; // C-E-G-C
+                const startTime = this.audioContext.currentTime;
+                
+                notes.forEach((note, index) => {
+                    setTimeout(() => {
+                        this.playNote(note, this.audioContext.currentTime, 0.2);
+                    }, index * 150);
+                });
+            }
+            
+            setVolume(volume) {
+                currentVolume = volume;
+                if (this.musicGain) {
+                    this.musicGain.gain.value = volume;
+                }
+            }
+            
+            stop() {
+                isPlaying = false;
+            }
+        }
+        
+        const christmasAudio = new ChristmasAudio();
+        
+        // 音乐控制函数
+        async function toggleMusic() {
+            if (!isPlaying) {
+                await christmasAudio.initialize();
+                isPlaying = true;
+                musicToggle.textContent = '⏸️';
+                musicToggle.classList.add('playing');
+                musicVisualizer.style.display = 'flex';
+                christmasAudio.playChristmasMusic();
+                showNotice('🎵 圣诞音乐已开启');
+            } else {
+                isPlaying = false;
+                musicToggle.textContent = '🎵';
+                musicToggle.classList.remove('playing');
+                musicVisualizer.style.display = 'none';
+                christmasAudio.stop();
+                showNotice('🔇 圣诞音乐已暂停');
+            }
+        }
+        
+        function toggleVolume() {
+            if (currentVolume > 0) {
+                currentVolume = 0;
+                volumeControl.textContent = '🔇';
+                showNotice('🔇 音乐已静音');
+            } else {
+                currentVolume = 0.3;
+                volumeControl.textContent = '🔊';
+                showNotice('🔊 音乐已开启');
+            }
+            christmasAudio.setVolume(currentVolume);
+        }
+        
+        // 圣诞特效函数
+        function createSantaFlyEffect() {
+            santaContainer.style.opacity = '1';
+            santaContainer.classList.add('santa-flying');
+            
+            // 4秒后重置
+            setTimeout(() => {
+                santaContainer.classList.remove('santa-flying');
+                santaContainer.style.opacity = '0';
+            }, 4000);
+        }
+        
+        function createGiftRain() {
+            const gifts = ['🎁', '🎀', '🧸', '🍪', '🍭', '⭐', '🎊', '🎉'];
+            const giftCount = 15;
+            
+            for (let i = 0; i < giftCount; i++) {
+                setTimeout(() => {
+                    const gift = document.createElement('div');
+                    gift.className = 'gift-rain gift-falling';
+                    gift.textContent = gifts[Math.floor(Math.random() * gifts.length)];
+                    gift.style.left = Math.random() * window.innerWidth + 'px';
+                    gift.style.animationDelay = Math.random() * 2 + 's';
+                    gift.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    
+                    document.body.appendChild(gift);
+                    
+                    // 3秒后移除元素
+                    setTimeout(() => {
+                        if (gift.parentNode) {
+                            gift.parentNode.removeChild(gift);
+                        }
+                    }, 5000);
+                }, i * 200);
+            }
+        }
+        
+        function createSuccessSparkles() {
+            const sparkles = ['✨', '⭐', '🌟', '💫', '🎆'];
+            const sparkleCount = 8;
+            
+            for (let i = 0; i < sparkleCount; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'success-sparkle sparkle-animation';
+                    sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        if (sparkle.parentNode) {
+                            sparkle.parentNode.removeChild(sparkle);
+                        }
+                    }, 1500);
+                }, i * 100);
+            }
+        }
+        
+        function startSnowfall() {
+            if (snowInterval) return;
+            
+            snowInterval = setInterval(() => {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake snowflake-falling';
+                snowflake.textContent = Math.random() > 0.5 ? '❄️' : '🌨️';
+                snowflake.style.left = Math.random() * window.innerWidth + 'px';
+                snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                snowflake.style.fontSize = (Math.random() * 10 + 15) + 'px';
+                
+                document.body.appendChild(snowflake);
+                
+                setTimeout(() => {
+                    if (snowflake.parentNode) {
+                        snowflake.parentNode.removeChild(snowflake);
+                    }
+                }, 8000);
+            }, 800);
+        }
+        
+        function startStarTwinkle() {
+            if (starInterval) return;
+            
+            starInterval = setInterval(() => {
+                const star = document.createElement('div');
+                star.className = 'star star-twinkling';
+                star.textContent = Math.random() > 0.5 ? '⭐' : '✨';
+                star.style.left = Math.random() * window.innerWidth + 'px';
+                star.style.top = Math.random() * window.innerHeight + 'px';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                
+                document.body.appendChild(star);
+                
+                setTimeout(() => {
+                    if (star.parentNode) {
+                        star.parentNode.removeChild(star);
+                    }
+                }, 4000);
+            }, 1500);
+        }
+        
+        function playBellSound() {
+            // 播放铃铛音效
+            christmasAudio.playBellEffect();
+            
+            // 创建铃铛摇摆效果
+            christmasBell.style.animation = 'none';
+            setTimeout(() => {
+                christmasBell.style.animation = 'bellSwing 0.5s ease-in-out 3';
+            }, 10);
+            
+            // 创建音效视觉反馈
+            createSuccessSparkles();
+        }
+        
+        function triggerLoginEffects() {
+            // 播放登录成功音效
+            christmasAudio.playSuccessEffect();
+            
+            // 圣诞老人飞过
+            setTimeout(() => createSantaFlyEffect(), 500);
+            
+            // 礼物雨
+            setTimeout(() => createGiftRain(), 1000);
+            
+            // 成功闪烁
+            setTimeout(() => createSuccessSparkles(), 1500);
+            
+            // 铃铛响起
+            setTimeout(() => playBellSound(), 2000);
+            
+            // 自动开启背景音乐（如果用户还没开启）
+            setTimeout(() => {
+                if (!isPlaying) {
+                    toggleMusic();
+                }
+            }, 3000);
+        }
+        
+        // 显示通知
+        function showNotice(message, type = 'success') {
+            notice.textContent = message;
+            notice.className = `notice ${type}`;
+            notice.style.display = 'block';
+            setTimeout(() => {
+                notice.style.display = 'none';
+            }, 3000);
+        }
+        
+        // 用户登录
+        function login() {
+            const inputId = userIdInput.value.trim().toLowerCase();
+            
+            if (!inputId) {
+                errorMessage.textContent = '请输入您的英文名';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            const user = users.find(u => u.id.toLowerCase() === inputId);
+            
+            if (!user) {
+                errorMessage.textContent = '用户名不存在，请检查输入';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            currentUser = user;
+            errorMessage.style.display = 'none';
+            
+            // 触发圣诞特效
+            triggerLoginEffects();
+            
+            // 切换界面
+            loginSection.style.display = 'none';
+            mainSection.style.display = 'block';
+            
+            if (user.isAdmin) {
+                // 管理员界面
+                adminPanel.style.display = 'block';
+                updateAdminPanel();
+                showNotice(`欢迎回来，管理员！`);
+            } else {
+                // 普通用户界面
+                adminPanel.style.display = 'none';
+                userWish.textContent = user.drawnWish || '暂无分配的心愿';
+                showNotice(`欢迎参加圣诞团建活动，${user.name}！`);
+            }
+        }
+        
+        // 更新管理员面板
+        function updateAdminPanel() {
+            adminTableBody.innerHTML = '';
+            
+            const regularUsers = users.filter(user => !user.isAdmin);
+            
+            regularUsers.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${user.name}</strong> (${user.id})</td>
+                    <td>${user.drawnWish || '未分配'}</td>
+                    <td><strong>${user.wishOwner || '未知'}</strong></td>
+                `;
+                adminTableBody.appendChild(row);
+            });
+        }
+        
+        // 退出登录
+        function logout() {
+            currentUser = null;
+            userIdInput.value = '';
+            
+            // 切换界面
+            mainSection.style.display = 'none';
+            loginSection.style.display = 'block';
+            
+            // 重置状态
+            errorMessage.style.display = 'none';
+            adminPanel.style.display = 'none';
+            
+            showNotice('已退出登录');
+        }
+        
+        // 事件监听
+        loginBtn.addEventListener('click', login);
+        logoutBtn.addEventListener('click', logout);
+        
+        // 铃铛点击事件
+        christmasBell.addEventListener('click', playBellSound);
+        
+        // 音乐控制事件
+        musicToggle.addEventListener('click', toggleMusic);
+        volumeControl.addEventListener('click', toggleVolume);
+        
+        // 回车键登录
+        userIdInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
+        
+        // 输入时隐藏错误信息
+        userIdInput.addEventListener('input', () => {
+            errorMessage.style.display = 'none';
+        });
+        
+        // 页面加载时启动背景特效
+        window.addEventListener('load', () => {
+            userIdInput.focus();
+            
+            // 启动背景特效
+            setTimeout(() => startSnowfall(), 1000);
+            setTimeout(() => startStarTwinkle(), 2000);
+            
+            // 欢迎特效（不包含音效，避免自动播放限制）
+            setTimeout(() => {
+                createSuccessSparkles();
+            }, 500);
+        });
+        
+        // 页面卸载时清理定时器
+        window.addEventListener('beforeunload', () => {
+            if (snowInterval) clearInterval(snowInterval);
+            if (starInterval) clearInterval(starInterval);
+            christmasAudio.stop();
+        });
+    </script>
+</body>
+</html>

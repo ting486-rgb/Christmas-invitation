@@ -1,0 +1,36 @@
+🎄 圣诞团建邀请函 - GitHub 部署说明
+
+📁 文件清单：
+✅ index.html          - 圣诞邀请函主程序（包含所有特效和音乐）
+✅ README.md           - 项目说明文档
+✅ DEPLOY_CHRISTMAS.md - 详细部署指南
+✅ 部署说明.txt        - 本文件（上传时可忽略）
+
+🚀 快速部署步骤：
+
+1. 创建 GitHub 仓库
+   - 仓库名：christmas-invitation
+   - 设置为 Public
+
+2. 上传文件
+   - 只需上传：index.html 和 README.md
+   - 拖拽到 GitHub 仓库页面即可
+
+3. 启用 GitHub Pages
+   - Settings → Pages → Deploy from branch → main
+
+4. 获取网址
+   - https://你的用户名.github.io/christmas-invitation
+
+🎯 功能特色：
+- 🎅 登录特效：圣诞老人飞过 + 礼物散落
+- 🎵 圣诞音乐：《铃儿响叮当》背景音乐
+- ❄️ 背景特效：雪花飘落 + 星星闪烁
+- 🔔 互动音效：可点击的圣诞铃铛
+- 🎁 心愿配对：完整的礼物交换系统
+
+📱 使用方法：
+- 团队成员用英文名登录查看心愿
+- 管理员用 "admin" 查看完整配对信息
+
+🎄 祝部署顺利，圣诞快乐！
